@@ -1,0 +1,167 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/api/pokemon/generate": {
+      "get": {
+        "description": "Generate pokemonsList",
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "PokemonGenerateQueryParameters",
+        "parameters": [
+          {
+            "type": "string",
+            "x-go-name": "Amount",
+            "description": "Amount to generate",
+            "name": "amount",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/RequestStatus"
+          },
+          "500": {
+            "description": "ErrorResponse",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/pokemon/get": {
+      "get": {
+        "description": "Get pokemonsList by ID",
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "PokemonQueryParameters",
+        "parameters": [
+          {
+            "type": "string",
+            "x-go-name": "ID",
+            "description": "ID of the request",
+            "name": "id",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/RequestStatus"
+          },
+          "400": {
+            "description": "ErrorResponse",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "ErrorResponse",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/pokemon/status": {
+      "get": {
+        "description": "Get pokemonsList by ID",
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "PokemonQueryParameters",
+        "parameters": [
+          {
+            "type": "string",
+            "x-go-name": "ID",
+            "description": "ID of the request",
+            "name": "id",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/RequestStatus"
+          },
+          "400": {
+            "description": "ErrorResponse",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "ErrorResponse",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/pokemon/store": {
+      "get": {
+        "description": "Get the last pokemonsList generated",
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "Store",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Pokemon"
+          },
+          "500": {
+            "description": "ErrorResponse",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "description": "ErrorResponse model",
+      "x-go-package": "pokemon/models"
+    },
+    "ErrorResponseWithRequestStatus": {
+      "description": "ErrorResponseWithRequestStatus model",
+      "x-go-package": "pokemon/models"
+    }
+  },
+  "responses": {
+    "Pokemon": {
+      "description": "Pokemon model",
+      "headers": {
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestStatus": {
+      "description": "RequestStatus model",
+      "headers": {
+        "completed": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
