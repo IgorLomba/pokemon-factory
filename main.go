@@ -1,3 +1,19 @@
+//	 Pokemon API:
+//	  version: 1.0
+//	  title: Pokemon API
+//	 Schemes: http, https
+//	 Host:
+//	 BasePath: /
+//		Consumes:
+//		- application/json
+//	 Produces:
+//	 - application/json
+//	 SecurityDefinitions:
+//	  Bearer:
+//	   type: apiKey
+//	   name: Authorization
+//	   in: header
+//	 swagger:meta
 package main
 
 import (
