@@ -1,4 +1,4 @@
-FROM quay.io/goswagger/swagger:v0.27.0 as swagger
+FROM quay.io/goswagger/swagger:latest as swagger
 
 FROM golang:1.18-alpine as builder
 
@@ -19,8 +19,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build --ldflags "-s -w" \
     -o pokemon-factory .
 
 COPY --from=swagger /usr/bin/swagger /usr/bin/swagger
-RUN printf '{"swagger":"2.0","info":{"version":"'$(git rev-parse --short HEAD)'","title":"Pokemon Factory API playground"},"host":"localhost:8888","basePath":"/"}' > example.json
-RUN swagger generate spec --input=example.json -o ./swagger.json -m
+RUN swagger generate spec -m -o ./swagger.json
 
 FROM alpine:3.14
 
