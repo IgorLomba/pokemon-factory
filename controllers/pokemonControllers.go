@@ -286,7 +286,7 @@ func processPokemonRequest(u *pokemonControllerHTTP, r *http.Request, requestID 
 	amount, _ := strconv.Atoi(values.Get("amount"))
 
 	var items []models.Pokemon
-	for j := 1; j < amount; j++ {
+	for j := 1; j <= amount; j++ {
 		name := adj[rand.Intn(len(adj))] + "-" + names[rand.Intn(len(names))]
 
 		item := models.Pokemon{
